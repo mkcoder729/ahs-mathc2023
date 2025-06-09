@@ -4121,129 +4121,136 @@
             margin-top: 1rem;
         }
 
-        /* ===== DARK MODE TOGGLE BUTTON ===== */
-        .dark-mode-toggle {
-          position: fixed;
-          top: 20px;
-          right: 20px;
-          z-index: 1001;
-          background: var(--ahs-dark);
-          color: white;
-          border: none;
-          border-radius: 50%;
-          width: 40px;
-          height: 40px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          cursor: pointer;
-          box-shadow: var(--shadow-md);
-          transition: all 0.3s ease;
-        }
-
-        .dark-mode-toggle:hover {
-          transform: scale(1.1);
-        }
-
-        .dark-mode-toggle .fa-moon,
-        .dark-mode-toggle .fa-sun {
-          transition: opacity 0.3s ease;
-        }
-
-        /* ===== ULTIMATE DARK MODE ===== */
+        /* ===== ULTIMATE DARK MODE - ZERO WHITE ELEMENTS ===== */
         body.dark-mode {
-          /* Deep color palette */
-          --bg-primary: #0a0e17;       /* Almost black blue */
-          --bg-secondary: #121828;     /* Card background */
-          --bg-tertiary: #1a2238;     /* Form elements */
-          --text-primary: #e2e8f0;     /* Soft white */
-          --text-secondary: #94a3b8;   /* Muted text */
-          --border-color: #2d3748;     /* Borders */
+          /* Core Color Palette */
+          --bg-primary: #0a0a12;       /* Deep space black */
+          --bg-secondary: #141420;     /* Slightly lighter for cards */
+          --bg-tertiary: #1e1e2d;      /* Form elements */
+          --text-primary: #e0e0ff;     /* Soft blue-white */
+          --text-secondary: #b0b0ff;   /* Muted blue-white */
+          --border-color: #3a3a5a;     /* Visible borders */
           --ahs-blue: #5e8af7;         /* Vibrant blue */
-          --ahs-blue-dark: #3b66c3;    /* Darker blue */
-
-          background: var(--bg-primary);
-          color: var(--text-primary);
+          --ahs-blue-dark: #4a6fd6;    /* Darker blue */
+          --shadow-md: 0 4px 10px rgba(0, 0, 20, 0.5);
+          --shadow-lg: 0 8px 20px rgba(0, 0, 30, 0.6);
+        
+          /* Apply to all elements by default */
+          background: var(--bg-primary) !important;
+          color: var(--text-primary) !important;
         }
-
-        /* ===== PREMIUM TOGGLE BUTTON ===== */
-        .dark-mode-toggle {
-          position: fixed;
-          top: 20px;
-          right: 20px;
-          z-index: 1001;
-          width: 44px;
-          height: 44px;
-          border-radius: 50%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          cursor: pointer;
-          border: none;
-          background: linear-gradient(145deg, #1e293b, #0f172a);
-          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3),
-                      inset 0 1px 1px rgba(255, 255, 255, 0.1);
-          transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-
-        .dark-mode-toggle:hover {
-          transform: scale(1.1) rotate(12deg);
-          box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4),
-                      inset 0 1px 1px rgba(255, 255, 255, 0.15);
-        }
-
-        .dark-mode-toggle i {
-          font-size: 1.1rem;
-          transition: all 0.4s ease;
-        }
-
-        /* Dark mode specific toggle styles */
-        body.dark-mode .dark-mode-toggle {
-          background: linear-gradient(145deg, #3b82f6, #1d4ed8);
-          box-shadow: 0 4px 20px rgba(59, 130, 246, 0.3),
-                      inset 0 1px 1px rgba(255, 255, 255, 0.2);
-        }
-
-        body.dark-mode .dark-mode-toggle:hover {
-          background: linear-gradient(145deg, #4a9cff, #2563eb);
-        }
-
-        /* ===== COMPLETE DARK STYLING ===== */
-        body.dark-mode *:not(.no-dark-mode) {
-          /* Force dark on all elements */
+        
+        /* ===== FORCE DARK ON ALL ELEMENTS ===== */
+        body.dark-mode *:not(.no-dark-mode):not(.keep-light) {
           background-color: var(--bg-secondary) !important;
           color: var(--text-primary) !important;
           border-color: var(--border-color) !important;
         }
-
-        /* Exceptions for specific elements */
-        body.dark-mode .card,
-        body.dark-mode .testimonial,
-        body.dark-mode .page-section {
-          background: var(--bg-secondary) !important;
-          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4) !important;
+        
+        /* ===== TEXT ELEMENTS - MAXIMUM VISIBILITY ===== */
+        body.dark-mode h1,
+        body.dark-mode h2,
+        body.dark-mode h3,
+        body.dark-mode h4,
+        body.dark-mode h5,
+        body.dark-mode h6 {
+          color: var(--ahs-blue) !important;
+          text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
         }
-
+        
+        body.dark-mode p,
+        body.dark-mode li,
+        body.dark-mode span,
+        body.dark-mode td {
+          color: var(--text-secondary) !important;
+        }
+        
+        /* ===== INTERACTIVE ELEMENTS ===== */
+        body.dark-mode a {
+          color: var(--ahs-blue) !important;
+          text-decoration: underline;
+        }
+        
+        body.dark-mode a:hover {
+          color: var(--ahs-blue-dark) !important;
+          text-shadow: 0 0 5px rgba(94, 138, 247, 0.5);
+        }
+        
+        /* ===== FORM CONTROLS ===== */
         body.dark-mode input,
         body.dark-mode textarea,
         body.dark-mode select {
           background: var(--bg-tertiary) !important;
+          border: 2px solid var(--ahs-blue) !important;
+          color: var(--text-primary) !important;
+          padding: 8px 12px;
         }
-
-        /* Protected elements */
+        
+        body.dark-mode input:focus,
+        body.dark-mode textarea:focus {
+          box-shadow: 0 0 0 3px rgba(94, 138, 247, 0.3);
+        }
+        
+        /* ===== CARDS & CONTAINERS ===== */
+        body.dark-mode .card,
+        body.dark-mode .testimonial,
+        body.dark-mode .page-section {
+          background: var(--bg-secondary) !important;
+          border: 1px solid var(--ahs-blue) !important;
+          box-shadow: var(--shadow-md) !important;
+          transition: all 0.3s ease;
+        }
+        
+        body.dark-mode .card:hover {
+          transform: translateY(-3px);
+          box-shadow: var(--shadow-lg) !important;
+        }
+        
+        /* ===== PROTECTED ELEMENTS ===== */
         body.dark-mode .no-dark-mode,
-        body.dark-mode .keep-light {
-          background-color: initial !important;
-          color: initial !important;
+        body.dark-mode .keep-light,
+        body.dark-mode .hero-animation {
+          background: transparent !important;
           filter: none !important;
+          opacity: 1 !important;
+          color: inherit !important;
         }
-
-        /* Images */
+        
+        /* ===== IMAGE HANDLING ===== */
         body.dark-mode img:not(.keep-light) {
-          filter: brightness(0.8) contrast(1.05);
-          opacity: 0.9;
+          filter: brightness(0.85) contrast(1.1) saturate(1.2);
+          border: 1px solid var(--ahs-blue);
         }
-
+        
+        /* ===== TOGGLE BUTTON (Bottom Left) ===== */
+        .dark-mode-toggle {
+          position: fixed;
+          bottom: 25px;
+          left: 25px;
+          z-index: 1001;
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          border: 2px solid var(--ahs-blue);
+          background: var(--bg-tertiary);
+          color: var(--ahs-blue);
+          box-shadow: var(--shadow-md);
+          transition: all 0.3s ease;
+        }
+        
+        body.dark-mode .dark-mode-toggle {
+          background: var(--ahs-blue);
+          color: var(--bg-primary);
+        }
+        
+        .dark-mode-toggle:hover {
+          transform: scale(1.1);
+          box-shadow: 0 0 15px var(--ahs-blue);
+        }
 
         /* Particle animation for hero section */
         .particle {
